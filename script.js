@@ -1,3 +1,6 @@
+// Alunos: Pedro Cabral Paisano
+//         Otávio Lima de Andrade
+
 // === Colocando o ano no rodapé ===
 const anoSpan = document.getElementById("ano");
 if (anoSpan) {
