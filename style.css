@@ -1,0 +1,385 @@
+/* ===========================
+   Configurações gerais
+=========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  background: #f5f5f5;
+  color: #333;
+}
+
+/* ===========================
+   Cabeçalho
+=========================== */
+.topo {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #e3350d;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 2rem;
+}
+
+.topo .brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.topo .brand img {
+  width: 50px;
+  height: 50px;
+}
+
+/* ===========================
+   Menu de navegação
+=========================== */
+.menu ul {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+}
+
+.menu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  color: #ffcb05;
+}
+
+#menuToggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ===========================
+   Estrutura principal
+=========================== */
+main {
+  padding-top: 80px;
+}
+
+.secao {
+  padding: 3rem 2rem;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.secao h2 {
+  margin-bottom: 1.5rem;
+  color: #e3350d;
+  text-align: center;
+}
+
+/* ===========================
+   Seção hero
+=========================== */
+.secao-hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ffcb05, #f5f5f5);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 500px;
+}
+
+.hero-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  margin-bottom: 1.5rem;
+}
+
+.imagem-hero {
+  max-width: 250px;
+  margin-top: 2rem;
+}
+
+
+.botao {
+  display: inline-block;
+  background: #e3350d;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.botao:hover {
+  background: #b82b0a;
+  color: #fff;
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+/* Barra de busca*/
+.busca {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.busca input {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  flex: 1;
+  max-width: 300px;
+}
+
+/*Card do Pokémon*/
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.imagem-pokemon {
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+}
+
+/* trocas */
+
+.sprite-row img,
+#nomePokemon {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.sprite-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.sprite-row img {
+  width: 64px;
+  height: 64px;
+}
+
+#nomePokemon:hover,
+.sprite-row img:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+/* Tabela de tipos */
+
+.tabela-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tabela-tipos {
+  min-width: 600px;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.tabela-tipos th,
+.tabela-tipos td {
+  border: 1px solid #ddd;
+  padding: 0.8rem;
+  text-align: center;
+}
+
+.tabela-tipos th {
+  background: #e3350d;
+  color: #fff;
+}
+
+.tabela-tipos tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+
+#sobre p {
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+
+.rodape {
+  background: #e3350d;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+
+@media (max-width: 768px) {
+  .menu ul {
+    display: none;
+    flex-direction: column;
+    background: #e3350d;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    padding: 1rem;
+  }
+
+  .menu ul.show {
+    display: flex;
+  }
+
+  #menuToggle {
+    display: block;
+  }
+
+  .secao-hero {
+    flex-direction: column;
+  }
+}
+
+.invisivel {
+  display: none;
+}
+
+/* Info do Pokémon */
+
+.info-pokemon {
+  margin-top: 1rem;
+}
+
+.info-pokemon h3 {
+  font-size: 1.5rem;
+  color: #e3350d;
+  margin-bottom: 0.5rem;
+  text-transform: capitalize;
+}
+
+.info-pokemon p {
+  margin: 0.3rem 0;
+}
+
+.tipos {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.tipo {
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+
+/* Cores por tipo */
+
+.tipo.fire {
+  background: #f08030;
+}
+
+.tipo.water {
+  background: #6890f0;
+}
+
+.tipo.grass {
+  background: #78c850;
+}
+
+.tipo.electric {
+  background: #f8d030;
+  color: #333;
+}
+
+.tipo.ice {
+  background: #98d8d8;
+}
+
+.tipo.fighting {
+  background: #c03028;
+}
+
+.tipo.poison {
+  background: #a040a0;
+}
+
+.tipo.ground {
+  background: #e0c068;
+  color: #333;
+}
+
+.tipo.flying {
+  background: #a890f0;
+}
+
+.tipo.psychic {
+  background: #f85888;
+}
+
+.tipo.bug {
+  background: #a8b820;
+}
+
+.tipo.rock {
+  background: #b8a038;
+}
+
+.tipo.ghost {
+  background: #705898;
+}
+
+.tipo.dragon {
+  background: #7038f8;
+}
+
+.tipo.dark {
+  background: #705848;
+}
+
+.tipo.steel {
+  background: #b8b8d0;
+  color: #333;
+}
+
+.tipo.fairy {
+  background: #ee99ac;
+}
+
+.tipo.normal {
+  background: #a8a878;
+}

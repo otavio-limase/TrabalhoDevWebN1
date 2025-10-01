@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pokedex</title>
+
+  <!-- Ícone -->
+
+  <link rel="icon" href="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"
+    type="image/png" />
+
+  <!-- Link CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Link JS -->
+  <script src="./script.js" defer></script>
+
+  <!-- SEO -->
+  <meta name="description"
+    content="Pokédex interativa com busca, lista dinâmica, tabela de tipos e formulário de contato." />
+  <meta name="keywords" content="Pokédex, Pokémon, PokéAPI, UNIFEI, Pedro Cabral Paisano" />
+  <meta name="author" content="Pedro Cabral Paisano" />
+</head>
+
+<body>
+  <!-- Cabeçalho fixo com logo e menu -->
+  <header class="topo">
+    <div class="brand">
+      <!-- Logo da Pokédex (Pokébola da API) -->
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"
+        alt="Ícone Pokébola" />
+      <h1>Pokédex</h1>
+    </div>
+
+    <!-- Menu de navegação -->
+    <nav class="menu">
+      <!-- Botão que aparece no mobile para abrir/fechar o menu -->
+      <button id="menuToggle" aria-label="Abrir menu">☰</button>
+      <ul id="menuLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#pokedex">Pokédex</a></li>
+        <li><a href="#tabela">Tabela de tipos</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Seção inicial (hero) -->
+    <section id="home" class="secao-hero">
+      <div class="hero-content">
+        <h2>Bem-vindo, treinador</h2>
+        <p>
+          Explore a Pokédex, aprenda sobre tipos e entre em contato. Tudo
+          responsivo e com interatividade.
+        </p>
+        <a href="#pokedex" class="botao">Começar agora</a>
+      </div>
+      <!-- Imagem do Pikachu direto da API -->
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
+        alt="Pikachu sorrindo" class="imagem-hero" />
+    </section>
+
+    <!-- Seção da Pokédex -->
+    <section id="pokedex" class="secao">
+      <h2>Pokédex</h2>
+
+      <!-- Barra de busca -->
+      <div class="busca">
+        <input id="searchInput" type="text" placeholder="Nome ou ID (ex: pikachu ou 25)" aria-label="Buscar Pokémon" />
+        <button id="botaoSearch" onclick="buscarPokemon()" class="botao">Buscar</button>
+      </div>
+
+      <!-- Card que mostra o Pokémon buscado -->
+      <div id="cardPokemon" class="card">
+        <img src="" alt="Imagem do Pokémon selecionado" id="imagemPokemon" class="imagem-pokemon invisivel" />
+
+        <div class="info-pokemon invisivel" id="infoPokemon">
+          <h3 id="nomePokemon" onclick="voltaOrig()"></h3>
+          <p><strong>ID:</strong> <span id="idPokemon"></span></p>
+          <div class="tipos" id="tiposPokemon"></div>
+        </div>
+        <p id="metaPokemon"></p>
+
+        <div class="sprite-row">
+          <img id="spriteDefault" alt="Sprite padrão" onclick="trocaImg1()" class="invisivel" />
+          <img id="spriteShiny" alt="Sprite shiny" onclick="trocaImg2 ()" class="invisivel" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabela de tipos -->
+    <section id="tabela" class="secao">
+      <h2>Tabela de tipos</h2>
+      <div class="tabela-wrapper">
+        <table class="tabela-tipos">
+          <thead>
+            <tr>
+              <th>Tipo</th>
+              <th>Exemplos</th>
+              <th>Vantagem contra</th>
+              <th>Fraqueza contra</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Normal</td>
+              <td>Snorlax, Eevee</td>
+              <td>None</td>
+              <td>Fighting</td>
+            </tr>
+            <tr>
+              <td>Fire</td>
+              <td>Charizard, Arcanine</td>
+              <td>Grass, Bug, Ice, Steel</td>
+              <td>Water, Rock, Ground</td>
+            </tr>
+            <tr>
+              <td>Water</td>
+              <td>Squirtle, Vaporeon</td>
+              <td>Fire, Ground, Rock</td>
+              <td>Electric, Grass</td>
+            </tr>
+            <tr>
+              <td>Grass</td>
+              <td>Bulbasaur, Leafeon</td>
+              <td>Water, Rock, Ground</td>
+              <td>Fire, Ice, Flying, Poison, Bug</td>
+            </tr>
+            <tr>
+              <td>Electric</td>
+              <td>Pikachu, Jolteon</td>
+              <td>Water, Flying</td>
+              <td>Ground</td>
+            </tr>
+            <tr>
+              <td>Ice</td>
+              <td>Glaceon, Lapras</td>
+              <td>Grass, Flying, Dragon, Ground</td>
+              <td>Fire, Fighting, Rock, Steel</td>
+            </tr>
+            <tr>
+              <td>Fighting</td>
+              <td>Machamp, Lucario</td>
+              <td>Normal, Ice, Rock, Dark, Steel</td>
+              <td>Flying, Psychic, Fairy</td>
+            </tr>
+            <tr>
+              <td>Poison</td>
+              <td>Gengar, Nidoking</td>
+              <td>Grass, Fairy</td>
+              <td>Ground, Psychic</td>
+            </tr>
+            <tr>
+              <td>Ground</td>
+              <td>Garchomp, Dugtrio</td>
+              <td>Fire, Electric, Poison, Rock, Steel</td>
+              <td>Water, Grass, Ice</td>
+            </tr>
+            <tr>
+              <td>Flying</td>
+              <td>Pidgeot, Salamence</td>
+              <td>Grass, Fighting, Bug</td>
+              <td>Electric, Ice, Rock</td>
+            </tr>
+            <tr>
+              <td>Psychic</td>
+              <td>Alakazam, Espeon</td>
+              <td>Fighting, Poison</td>
+              <td>Bug, Ghost, Dark</td>
+            </tr>
+            <tr>
+              <td>Bug</td>
+              <td>Scyther, Heracross</td>
+              <td>Grass, Psychic, Dark</td>
+              <td>Fire, Flying, Rock</td>
+            </tr>
+            <tr>
+              <td>Rock</td>
+              <td>Onix, Tyranitar</td>
+              <td>Fire, Ice, Flying, Bug</td>
+              <td>Water, Grass, Fighting, Steel, Ground</td>
+            </tr>
+            <tr>
+              <td>Ghost</td>
+              <td>Gengar, Mismagius</td>
+              <td>Psychic, Ghost</td>
+              <td>Ghost, Dark</td>
+            </tr>
+            <tr>
+              <td>Dragon</td>
+              <td>Dragonite, Salamence</td>
+              <td>Dragon</td>
+              <td>Ice, Dragon, Fairy</td>
+            </tr>
+            <tr>
+              <td>Dark</td>
+              <td>Umbreon, Absol</td>
+              <td>Psychic, Ghost</td>
+              <td>Fighting, Bug, Fairy</td>
+            </tr>
+            <tr>
+              <td>Steel</td>
+              <td>Steelix, Metagross</td>
+              <td>Ice, Rock, Fairy</td>
+              <td>Fire, Fighting, Ground</td>
+            </tr>
+            <tr>
+              <td>Fairy</td>
+              <td>Sylveon, Gardevoir</td>
+              <td>Fighting, Dragon, Dark</td>
+              <td>Steel, Poison</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="secao">
+      <h2>Sobre o projeto</h2>
+      <p>
+        A <b>Pokédex</b> foi desenvolvida por <b>Pedro Cabral Paisano</b> como
+        parte de um trabalho acadêmico da disciplina de
+        <b>Desenvolvimento de Sistemas Web</b>, no curso de
+        <b>Engenharia de Computação da Universidade Federal de Itajubá –
+          Campus Itabira (UNIFEI).</b>
+      </p>
+      <p>
+        O projeto teve como objetivo aplicar na prática os conhecimentos
+        adquiridos em sala de aula, utilizando
+        <b>HTML, CSS e JavaScript</b> para construir um site do zero, com foco
+        em
+        <b>responsividade, interatividade e boas práticas de desenvolvimento
+          web.</b>
+      </p>
+      <p>
+        Para tornar o trabalho mais criativo e envolvente, escolhi o universo
+        Pokémon como tema central. Todas as informações exibidas são obtidas
+        em tempo real da <b>PokéAPI</b>, uma base de dados gratuita e aberta
+        que reúne detalhes sobre cada Pokémon, incluindo tipos, vantagens e
+        fraquezas.
+      </p>
+      <p>
+        Além de atender aos requisitos da disciplina, este site também busca
+        ser uma ferramenta divertida e acessível para fãs e curiosos,
+        permitindo explorar a Pokédex e consultar uma tabela completa de
+        tipos.
+      </p>
+    </section>
+  </main>
+  <footer class="rodape">
+    <p>
+      &copy; <span id="ano"></span> · Pokédex · Desenvolvido por
+      <strong>Pedro Cabral Paisano</strong>
+    </p>
+  </footer>
+</body>
+
+</html>
