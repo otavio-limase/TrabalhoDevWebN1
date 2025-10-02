@@ -32,7 +32,6 @@ let troca;
 // Função para buscar Pokémon
 function buscarPokemon() {
   const termo = searchInput.value.toLowerCase().trim();
-  if (!isNaN(termo)) {
     if (!termo) return;
 
     metaPokemon.textContent = "Carregando...";
@@ -89,7 +88,7 @@ function buscarPokemon() {
         infoPokemon.classList.add("invisivel");
       });
   }
-}
+
 
 function trocaImg1() {
   imagemPokemon.src = troca.sprites.front_default;
